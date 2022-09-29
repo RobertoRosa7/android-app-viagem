@@ -105,7 +105,7 @@
       app:layout_constraintTop_toBottomOf="@+id/payment_edittext_cvc" />
 
     <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/payment_edittext_btn_finish"
+      android:id="@+id/payment_btn_finish"
       style="@style/default_button"
       android:text="@string/payment_btn_finish"
       app:layout_constraintEnd_toEndOf="@+id/payment_edittext_creditcard_name"

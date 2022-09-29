@@ -1,24 +1,15 @@
 package com.example.appviagem.ui.activity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appviagem.R;
 import com.example.appviagem.model.ListPackage;
-import com.example.appviagem.util.UtilDate;
-import com.example.appviagem.util.UtilFormat;
-import com.example.appviagem.util.UtilResource;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
-public class ResumePackageActivity extends AppCompatActivity {
+public class ResumePackageActivity extends MainActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,49 +19,13 @@ public class ResumePackageActivity extends AppCompatActivity {
 
 		ListPackage packageSaoPaulo = new ListPackage("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
 
-		this.setImage(packageSaoPaulo);
-		this.setLocal(packageSaoPaulo);
-		this.setDays(packageSaoPaulo);
-		this.setPrice(packageSaoPaulo);
-		this.setDate(packageSaoPaulo);
+		this.setImage(packageSaoPaulo, findViewById(R.id.resume_package_image));
+		this.setLocal(packageSaoPaulo, findViewById(R.id.resume_package_local));
+		this.setDays(packageSaoPaulo, findViewById(R.id.resume_package_days));
+		this.setPrice(packageSaoPaulo, findViewById(R.id.resume_package_price));
+		this.setDate(packageSaoPaulo, findViewById(R.id.resume_package_date));
 
 		Button resumePackageBottomPayment = findViewById(R.id.resume_package_btn_payment);
-		this.startActivity(new Intent(this, PaymentActivity.class));
-	}
-
-	private void setDate(ListPackage listPackage) {
-		TextView resumePackageDate = findViewById(R.id.resume_package_date);
-		String joinDates = UtilFormat.formatStringDays(this.getDateStart(), this.addDays(listPackage.getDays()));
-		resumePackageDate.setText(joinDates);
-	}
-
-	private Date getDateStart() {
-		return UtilDate.getDate(UtilDate.getCalendarInstance());
-	}
-
-	private Date addDays(int days) {
-		return UtilDate.addDays(UtilDate.getCalendarInstance(), days);
-	}
-
-
-	private void setPrice(ListPackage listPackage) {
-		TextView resumePackagePrice = findViewById(R.id.resume_package_price);
-		resumePackagePrice.setText(UtilFormat.formatCurrency().format(listPackage.getPrice()));
-	}
-
-	private void setDays(ListPackage listPackage) {
-		TextView resumePackageDays = findViewById(R.id.resume_package_days);
-		resumePackageDays.setText(UtilFormat.getTextDays(listPackage.getDays()));
-	}
-
-	private void setImage(ListPackage listPackage) {
-		ImageView resumePackageImage = findViewById(R.id.resume_package_image);
-		Drawable drawablePackageImage = UtilResource.getDrawable(listPackage, this);
-		resumePackageImage.setImageDrawable(drawablePackageImage);
-	}
-
-	private void setLocal(ListPackage listPackage) {
-		TextView resumePackageLocal = findViewById(R.id.resume_package_local);
-		resumePackageLocal.setText(listPackage.getLocal());
+		resumePackageBottomPayment.setOnClickListener(view -> this.startActivity(new Intent(this, PaymentActivity.class)));
 	}
 }
