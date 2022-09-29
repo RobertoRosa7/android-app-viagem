@@ -1,9 +1,7 @@
 package com.example.appviagem.ui.activity;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,28 +16,26 @@ import com.example.appviagem.util.UtilResource;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ResumePackageActivity extends AppCompatActivity {
+public class ResumeBuyActivity extends AppCompatActivity {
+
+	public static final String RESUME_BUY = "Resumo da compra";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.activity_resume_package);
-		this.setTitle("Resumo do pacote");
+		this.setContentView(R.layout.activity_resume_buy);
+
+		this.setTitle(RESUME_BUY);
 
 		ListPackage packageSaoPaulo = new ListPackage("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
-
 		this.setImage(packageSaoPaulo);
 		this.setLocal(packageSaoPaulo);
-		this.setDays(packageSaoPaulo);
 		this.setPrice(packageSaoPaulo);
 		this.setDate(packageSaoPaulo);
-
-		Button resumePackageBottomPayment = findViewById(R.id.resume_package_btn_payment);
-		this.startActivity(new Intent(this, PaymentActivity.class));
 	}
 
 	private void setDate(ListPackage listPackage) {
-		TextView resumePackageDate = findViewById(R.id.resume_package_date);
+		TextView resumePackageDate = findViewById(R.id.resume_buy_text_date);
 		String joinDates = UtilFormat.formatStringDays(this.getDateStart(), this.addDays(listPackage.getDays()));
 		resumePackageDate.setText(joinDates);
 	}
@@ -54,23 +50,18 @@ public class ResumePackageActivity extends AppCompatActivity {
 
 
 	private void setPrice(ListPackage listPackage) {
-		TextView resumePackagePrice = findViewById(R.id.resume_package_price);
+		TextView resumePackagePrice = findViewById(R.id.resume_buy_text_price);
 		resumePackagePrice.setText(UtilFormat.formatCurrency().format(listPackage.getPrice()));
 	}
 
-	private void setDays(ListPackage listPackage) {
-		TextView resumePackageDays = findViewById(R.id.resume_package_days);
-		resumePackageDays.setText(UtilFormat.getTextDays(listPackage.getDays()));
-	}
-
 	private void setImage(ListPackage listPackage) {
-		ImageView resumePackageImage = findViewById(R.id.resume_package_image);
+		ImageView resumePackageImage = findViewById(R.id.resume_buy_image);
 		Drawable drawablePackageImage = UtilResource.getDrawable(listPackage, this);
 		resumePackageImage.setImageDrawable(drawablePackageImage);
 	}
 
 	private void setLocal(ListPackage listPackage) {
-		TextView resumePackageLocal = findViewById(R.id.resume_package_local);
+		TextView resumePackageLocal = findViewById(R.id.resume_buy_text_city);
 		resumePackageLocal.setText(listPackage.getLocal());
 	}
 }

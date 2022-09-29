@@ -3,4 +3,23 @@
   <string name="especiais">Especiais</string>
   <string name="brasil">Brasil</string>
   <string name="image">image</string>
+  <string name="imagem">Imagem</string>
+  <string name="realizar_pagamento">Realizar Pagamento</string>
+  <string name="pre_o_final">Preço final:</string>
+
+  <string name="payment_buy_price">Valor da compra:</string>
+  <string name="payment_price">R$ 421,50</string>
+  <string name="payment_title">Digite as informações do cartão de crédito que você deseja usar para o pagamento</string>
+  <string name="payment_credit_card_number">Número do cartão de crédito</string>
+  <string name="payment_credit_card_mont_hint">MM</string>
+  <string name="payment_credit_card_year_hint">AA</string>
+  <string name="payment_credit_card_cvc_hint">CVC</string>
+  <string name="payment_credit_card_name_hint">Nome do cartão</string>
+  <string name="payment_btn_finish">Finalizar compra</string>
+  <string name="payment_only_char">abcdefghijklmnopqrstuvwxyzçABCDEFGHIJKLMNOPQRSTUVWXYZÇ^~\u0020</string>
+
+  <string name="resume_buy_text_congratulation">Parabéns</string>
+  <string name="resume_buy_text_success">Compra realizada com sucesso :)</string>
+  <string name="resume_buy_text_text_confirm">Confira o resumo da compra</string>
+  <string name="resume_buy_image_description">Image de cidade</string>
 </resources>

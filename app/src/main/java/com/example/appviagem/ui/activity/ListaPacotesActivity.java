@@ -20,8 +20,8 @@ public class ListaPacotesActivity extends AppCompatActivity {
 		this.setContentView(R.layout.activity_lista_pacotes);
 		this.setTitle(TOOLBAR_TITLE);
 		this.setListView();
-		Intent intent = new Intent(this, ResumePackageActivity.class);
-		this.startActivity(intent);
+
+		this.startActivity(new Intent(this, ResumePackageActivity.class));
 	}
 
 	private void setListView() {

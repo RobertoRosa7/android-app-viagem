@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/payment_title"
+      style="@style/payment_title"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@string/payment_title"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+      android:id="@+id/payment_buy_price"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="20dp"
+      android:text="@string/payment_buy_price"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/payment_title" />
+
+    <TextView
+      android:id="@+id/payment_price"
+      style="@style/payment_price"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="2dp"
+      android:text="@string/payment_price"
+      app:layout_constraintStart_toStartOf="@id/payment_buy_price"
+      app:layout_constraintTop_toBottomOf="@id/payment_buy_price" />
+
+    <EditText
+      android:id="@+id/payment_edittext_name"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="8dp"
+      android:autofillHints="creditCardNumber"
+      android:hint="@string/payment_credit_card_number"
+      android:inputType="number"
+      android:maxLength="12"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@id/payment_buy_price"
+      app:layout_constraintTop_toBottomOf="@id/payment_price" />
+
+
+    <EditText
+      android:id="@+id/payment_edittext_month"
+      android:layout_width="45dp"
+      android:layout_height="wrap_content"
+      android:autofillHints="creditCardExpirationMonth"
+      android:hint="@string/payment_credit_card_mont_hint"
+      android:inputType="number"
+      android:maxLength="2"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toBottomOf="@id/payment_edittext_cvc"
+      app:layout_constraintStart_toStartOf="@id/payment_edittext_name" />
+
+    <EditText
+      android:id="@+id/payment_edittext_year"
+      android:layout_width="45dp"
+      android:layout_height="wrap_content"
+      android:autofillHints="creditCardExpirationYear"
+      android:hint="@string/payment_credit_card_year_hint"
+      android:inputType="number"
+      android:maxLength="2"
+      android:textAlignment="center"
+      app:layout_constraintBottom_toBottomOf="@id/payment_edittext_cvc"
+      app:layout_constraintStart_toEndOf="@id/payment_edittext_month" />
+
+    <EditText
+      android:id="@+id/payment_edittext_cvc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:autofillHints="creditCardSecurityCode"
+      android:drawableStart="@drawable/ic_cvc_cartao_de_credito"
+      android:hint="@string/payment_credit_card_cvc_hint"
+      android:inputType="number"
+      android:maxLength="3"
+      android:textAlignment="center"
+      app:layout_constraintEnd_toEndOf="@+id/payment_edittext_name"
+      app:layout_constraintTop_toBottomOf="@id/payment_edittext_name" />
+
+    <EditText
+      android:id="@+id/payment_edittext_creditcard_name"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:autofillHints="name"
+      android:digits="@string/payment_only_char"
+      android:hint="@string/payment_credit_card_name_hint"
+      android:inputType="text"
+      app:layout_constraintEnd_toEndOf="@+id/payment_edittext_cvc"
+      app:layout_constraintStart_toStartOf="@+id/payment_edittext_month"
+      app:layout_constraintTop_toBottomOf="@+id/payment_edittext_cvc" />
+
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/payment_edittext_btn_finish"
+      style="@style/default_button"
+      android:text="@string/payment_btn_finish"
+      app:layout_constraintEnd_toEndOf="@+id/payment_edittext_creditcard_name"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/payment_edittext_creditcard_name"
+      app:layout_constraintTop_toBottomOf="@id/payment_edittext_creditcard_name" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
