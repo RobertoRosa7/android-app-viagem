@@ -7,25 +7,38 @@ import android.widget.Button;
 import com.example.appviagem.R;
 import com.example.appviagem.model.ListPackage;
 
-import java.math.BigDecimal;
-
 public class ResumePackageActivity extends MainActivity {
+
+	public static final String RESUMO_DO_PACOTE = "Resumo do pacote";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_resume_package);
-		this.setTitle("Resumo do pacote");
+		this.setTitle(RESUMO_DO_PACOTE);
 
-		ListPackage packageSaoPaulo = new ListPackage("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
+		Intent intent = this.getIntent();
+		if (intent.hasExtra(LIST_PACKAGE)) {
+			final ListPackage listPackage = (ListPackage) intent.getSerializableExtra(LIST_PACKAGE);
+			this.setInformation(listPackage);
+			this.gotoPayment(listPackage);
+		}
+	}
 
-		this.setImage(packageSaoPaulo, findViewById(R.id.resume_package_image));
-		this.setLocal(packageSaoPaulo, findViewById(R.id.resume_package_local));
-		this.setDays(packageSaoPaulo, findViewById(R.id.resume_package_days));
-		this.setPrice(packageSaoPaulo, findViewById(R.id.resume_package_price));
-		this.setDate(packageSaoPaulo, findViewById(R.id.resume_package_date));
-
+	private void gotoPayment(ListPackage listPackage) {
 		Button resumePackageBottomPayment = findViewById(R.id.resume_package_btn_payment);
-		resumePackageBottomPayment.setOnClickListener(view -> this.startActivity(new Intent(this, PaymentActivity.class)));
+		resumePackageBottomPayment.setOnClickListener(view -> {
+			Intent intentToPayment = new Intent(this, PaymentActivity.class);
+			intentToPayment.putExtra(LIST_PACKAGE, listPackage);
+			this.startActivity(intentToPayment);
+		});
+	}
+
+	private void setInformation(ListPackage listPackage) {
+		this.setImage(listPackage, findViewById(R.id.resume_package_image));
+		this.setLocal(listPackage, findViewById(R.id.resume_package_local));
+		this.setDays(listPackage, findViewById(R.id.resume_package_days));
+		this.setPrice(listPackage, findViewById(R.id.resume_package_price));
+		this.setDate(listPackage, findViewById(R.id.resume_package_date));
 	}
 }

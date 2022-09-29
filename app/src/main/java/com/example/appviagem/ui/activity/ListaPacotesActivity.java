@@ -6,7 +6,10 @@ import android.widget.ListView;
 
 import com.example.appviagem.R;
 import com.example.appviagem.dto.PackageDto;
+import com.example.appviagem.model.ListPackage;
 import com.example.appviagem.ui.adapter.ListPackageAdapter;
+
+import java.util.List;
 
 public class ListaPacotesActivity extends MainActivity {
 
@@ -22,10 +25,16 @@ public class ListaPacotesActivity extends MainActivity {
 
 	private void setListView() {
 		ListView listView = findViewById(R.id.lista_pacote_listview);
-		listView.setAdapter(new ListPackageAdapter(this, new PackageDto().list()));
+		final List<ListPackage> packages = new PackageDto().list();
+		listView.setAdapter(new ListPackageAdapter(this, packages));
+		this.gotoResume(listView, packages);
+	}
 
+	private void gotoResume(ListView listView, List<ListPackage> packages) {
 		listView.setOnItemClickListener((adapterView, view, i, l) -> {
-			this.startActivity(new Intent(ListaPacotesActivity.this, ResumePackageActivity.class));
+			Intent intent = new Intent(ListaPacotesActivity.this, ResumePackageActivity.class);
+			intent.putExtra(LIST_PACKAGE, packages.get(i));
+			this.startActivity(intent);
 		});
 	}
 }

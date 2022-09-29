@@ -7,8 +7,6 @@ import android.widget.Button;
 import com.example.appviagem.R;
 import com.example.appviagem.model.ListPackage;
 
-import java.math.BigDecimal;
-
 public class PaymentActivity extends MainActivity {
 
 	public static final String PAYMENT = "Pagamento";
@@ -19,13 +17,20 @@ public class PaymentActivity extends MainActivity {
 		this.setContentView(R.layout.activity_payment);
 		this.setTitle(PAYMENT);
 
-		ListPackage packageSaoPaulo = new ListPackage("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
-		this.setPrice(packageSaoPaulo, findViewById(R.id.payment_price));
-		this.onSubmitBuy();
+		Intent intent = this.getIntent();
+		if (intent.hasExtra(LIST_PACKAGE)) {
+			final ListPackage listPackage = (ListPackage) intent.getSerializableExtra(LIST_PACKAGE);
+			this.setPrice(listPackage, findViewById(R.id.payment_price));
+			this.onSubmitBuy(listPackage);
+		}
 	}
 
-	private void onSubmitBuy() {
+	private void onSubmitBuy(ListPackage listPackage) {
 		Button button = findViewById(R.id.payment_btn_finish);
-		button.setOnClickListener(view -> this.startActivity(new Intent(this, ResumeBuyActivity.class)));
+		button.setOnClickListener(view -> {
+			Intent intent = new Intent(this, ResumeBuyActivity.class);
+			intent.putExtra(LIST_PACKAGE, listPackage);
+			this.startActivity(intent);
+		});
 	}
 }

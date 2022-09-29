@@ -15,6 +15,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+	public static final String LIST_PACKAGE = "package";
+
 	public void setDate(ListPackage listPackage, TextView view) {
 		String joinDates = UtilFormat.formatStringDays(this.getDateStart(), this.addDays(listPackage.getDays()));
 		view.setText(joinDates);
