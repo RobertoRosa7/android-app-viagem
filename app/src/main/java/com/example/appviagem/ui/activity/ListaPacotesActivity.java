@@ -1,5 +1,6 @@
 package com.example.appviagem.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -19,6 +20,8 @@ public class ListaPacotesActivity extends AppCompatActivity {
 		this.setContentView(R.layout.activity_lista_pacotes);
 		this.setTitle(TOOLBAR_TITLE);
 		this.setListView();
+		Intent intent = new Intent(this, ResumePackageActivity.class);
+		this.startActivity(intent);
 	}
 
 	private void setListView() {

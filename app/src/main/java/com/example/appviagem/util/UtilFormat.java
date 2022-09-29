@@ -1,7 +1,10 @@
 package com.example.appviagem.util;
 
+import androidx.annotation.NonNull;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class UtilFormat {
@@ -13,6 +16,11 @@ public class UtilFormat {
 
 	public static NumberFormat formatCurrency() {
 		return DecimalFormat.getCurrencyInstance(new Locale(LANGUAGE, COUNTRY));
+	}
+
+	@NonNull
+	public static String formatStringDays(Date dtStart, Date dtEnd) {
+		return UtilDate.formatLocale(dtStart) + " - " + UtilDate.formatLocale(dtEnd) + " de " + UtilDate.getYear();
 	}
 
 	public static String getTextDays(int day) {

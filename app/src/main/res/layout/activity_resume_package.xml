@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ui.activity.ResumePackageActivity">
+
+  <ImageView
+    android:id="@+id/resume_package_image"
+    android:layout_width="0dp"
+    android:layout_height="140dp"
+    android:contentDescription="Imagem"
+    android:scaleType="centerCrop"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"
+    tools:src="@sample/pacotes.json/pacotes/imagem" />
+
+  <TextView
+    android:id="@+id/resume_package_local"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/resume_package_image"
+    tools:text="@sample/pacotes.json/pacotes/local" />
+
+  <TextView
+    android:id="@+id/resume_package_days"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:textSize="16sp"
+    app:layout_constraintStart_toStartOf="@id/resume_package_local"
+    app:layout_constraintTop_toBottomOf="@id/resume_package_local"
+    tools:text="@sample/pacotes.json/pacotes/dias" />
+
+  <TextView
+    android:id="@+id/resume_package_date"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="10/12 17/12/2022"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toStartOf="@+id/resume_package_price"
+    app:layout_constraintStart_toStartOf="@id/resume_package_days"
+    app:layout_constraintTop_toBottomOf="@id/resume_package_days" />
+
+  <TextView
+    android:id="@+id/resume_package_price"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:textAlignment="textEnd"
+    android:textColor="@android:color/holo_green_dark"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="@+id/resume_package_date"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/resume_package_date"
+    app:layout_constraintTop_toBottomOf="@id/resume_package_final_price"
+    tools:text="@sample/pacotes.json/pacotes/preco" />
+
+  <TextView
+    android:id="@+id/resume_package_final_price"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Preço final:"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="@+id/resume_package_price"
+    app:layout_constraintTop_toTopOf="@+id/resume_package_days" />
+
+  <Button
+    android:id="@+id/resume_package_btn_payment"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/bottom_rounded_orange"
+    android:text="Realizar Pagamento"
+    android:textColor="@android:color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
